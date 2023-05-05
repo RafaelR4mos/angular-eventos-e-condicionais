@@ -1,0 +1,73 @@
+<div class="section-container">
+  <div>
+    <h2>Login</h2>
+
+    <div class="form-container">
+      <form (ngSubmit)="enviarFormulario()" #myForm="ngForm">
+        <h3>Preencha os campos para realizar login</h3>
+
+        <div>
+          <label for="nome">nome</label>
+          <input
+            [(ngModel)]="nome"
+            type="text"
+            name="nome"
+            id="nome"
+            placeholder="Nome"
+            required
+          />
+        </div>
+
+        <div>
+          <label for="birth-date">Data de nascimento</label>
+          <input
+            [(ngModel)]="date"
+            type="date"
+            name="date"
+            id="birth-date"
+            required
+          />
+        </div>
+
+        <div>
+          <label for="email">E-mail</label>
+          <input
+            [(ngModel)]="email"
+            type="email"
+            name="email"
+            id="email"
+            placeholder="email@email.com"
+            required
+          />
+        </div>
+
+        <button mat-raised-button color="warn" type="submit">Enviar</button>
+      </form>
+    </div>
+
+    <div>
+      <h2>Dados pessoais</h2>
+      <div class="user-data" *ngFor="let usuario of usuariosCadastrados">
+        <span>Nome: {{ usuario.nome }}</span>
+        <span>Data de Nascimento: {{ usuario.data }}</span>
+        <span>email: {{ usuario.email }}</span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div *ngIf="isLightTheme; else swithToLight">
+          <button mat-raised-button color="primary" (click)="toggleTheme()">
+            <i class="ph-thin ph-moon custom-icon"></i>
+          </button>
+        </div>
+
+        <ng-template #swithToLight>
+          <button mat-raised-button color="warn" (click)="toggleTheme()">
+            <i class="ph-thin ph-sun custom-icon"></i>
+          </button>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="section-container">
+  <div>
+    <div *ngIf="userTheme === 'light'; else swithToLight">
+      <button mat-raised-button color="primary">
+        <i class="ph-thin ph-moon custom-icon"></i>
+      </button>
+    </div>
+
+    <ng-template #swithToLight>
+      <button mat-raised-button color="primary">
+        <i class="ph-thin ph-sun custom-icon"></i>
+      </button>
+    </ng-template>
+  </div>
+
+  <div>
+    <div *ngIf="isDataAvailable; else dataNotAvailable">
+      <h2>Usuário encontrado</h2>
+
+      <div class="user-data">
+        <h3>Dados do usuário</h3>
+        <span>nome: {{ name }}</span>
+        <span>email: {{ email }}</span>
+      </div>
+    </div>
+
+    <ng-template #dataNotAvailable>
+      <h3>Carregando...</h3>
+      <mat-spinner color="warn"></mat-spinner>
+    </ng-template>
+  </div>
+</div>
